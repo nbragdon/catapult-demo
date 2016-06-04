@@ -1,6 +1,7 @@
 .DS_STORE
 *.log
 
+config/local.json
 node_modules
 
 dist

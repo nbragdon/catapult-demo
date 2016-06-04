@@ -9,10 +9,15 @@ import _debug from 'debug'
 import config from '../config'
 import webpackDevMiddleware from './middleware/webpack-dev'
 import webpackHMRMiddleware from './middleware/webpack-hmr'
+import api from './api'
+import bodyParser from 'koa-bodyparser'
 
 const debug = _debug('app:server')
 const paths = config.utils_paths
 const app = new Koa()
+
+app.use(bodyParser())
+app.use(api())
 
 // Enable koa-proxy if it has been enabled in the config.
 if (config.proxy && config.proxy.enabled) {

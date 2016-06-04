@@ -3,6 +3,7 @@ import path from 'path'
 import _debug from 'debug'
 import { argv } from 'yargs'
 import ip from 'ip'
+import localConifg from './local.json'
 
 const localip = ip.address()
 const debug = _debug('app:config')
@@ -128,5 +129,7 @@ if (overrides) {
 } else {
   debug('No environment overrides found, defaults will be used.')
 }
+
+Object.assign(config, localConifg)
 
 export default config
